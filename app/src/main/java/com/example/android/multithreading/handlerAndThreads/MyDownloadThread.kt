@@ -1,4 +1,4 @@
-package com.example.android.multithreading
+package com.example.android.multithreading.handlerAndThreads
 
 import android.util.Log
 
@@ -11,7 +11,7 @@ class MyDownloadThread : Thread() {
     override fun run() {
         super.run()
 
-        playList.forEach {songName->
+        playList.forEach { songName->
             downloadSong(songName)
         }
     }

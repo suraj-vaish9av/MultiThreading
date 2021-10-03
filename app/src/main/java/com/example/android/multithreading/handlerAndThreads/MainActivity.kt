@@ -1,4 +1,4 @@
-package com.example.android.multithreading
+package com.example.android.multithreading.handlerAndThreads
 
 import android.os.*
 import android.text.method.ScrollingMovementMethod
@@ -6,24 +6,25 @@ import android.util.Log
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.android.multithreading.R
 import com.example.android.multithreading.threadLooperHandler.DownloadThread
+import kotlin.concurrent.thread
 
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var txtData:TextView
 
-    val TAG="MainActivity"
+    private val TAG="MainActivity"
 
     lateinit var progress:ProgressBar
     lateinit var handler : Handler
 
-    val myDownloadThread by lazy { DownloadThread(this@MainActivity) }
+    private val myDownloadThread by lazy { DownloadThread(this@MainActivity) }
 
     companion object{
-        val MESSAGE_KEY="MESSAGE_KEY"
+        const val MESSAGE_KEY="MESSAGE_KEY"
     }
 
 
@@ -58,6 +59,14 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this@MainActivity,"hello MyHandlerThread from runnable", Toast.LENGTH_SHORT).show()
         }*/
 
+        thread {
+
+            Handler(Looper.getMainLooper()){
+                Log.d("Handler","from thread")
+                //Toast.makeText(applicationContext, "This won't show up", Toast.LENGTH_SHORT).show()
+                return@Handler true
+            }
+        }
     }
 
     fun runCode(view: View) {
@@ -83,6 +92,10 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    /**
+     * 1. A common use case where a worker thread sends data to handler so that handler can do UI updates,
+     * as worker thread can not update UI
+     */
     fun startThread(view: View){
         val runnable = Runnable {
             Log.d(TAG, "starting download")

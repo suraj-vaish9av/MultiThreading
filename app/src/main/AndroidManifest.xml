@@ -9,13 +9,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MultiThreading">
-        <activity android:name=".MainActivity">
+        <activity android:name=".java.interrupt.ThreadInterruptActivity"></activity>
+        <activity android:name=".java.callableAndFuture.CallableAndFutureActivity" />
+        <activity android:name=".java.deadlock.DeadlockActivity" />
+        <activity android:name=".java.reentrant.ReentrantLockActivity" />
+        <activity android:name=".java.producerConsumerViaWaitNotify.ProducerConsumerActivityImpl" />
+        <activity android:name=".java.producerConsumer.ProducerConsumerActivity" />
+        <activity android:name=".java.latches.CountDownLatchesImplActivity" />
+        <activity android:name=".java.threadPool.ThreadPoolExecutorServiceActivity" />
+        <activity android:name=".java.synchro.multiLock.MultiLockActivity" />
+        <activity android:name=".StarterActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".java.synchro.syncBlock.SynchronousImplActivity" />
+        <activity android:name=".java.synchro.volat.ThreadSynchronizationActivity" />
+        <activity android:name=".java.threadTypes.JavaThreadsImplActivity" />
+        <activity android:name=".handlerAndThreads.MainActivity" />
     </application>
 
 </manifest>
